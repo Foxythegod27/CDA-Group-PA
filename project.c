@@ -5,24 +5,17 @@
 /* 10 Points */
 void ALU(unsigned A,unsigned B,char ALUControl,unsigned *ALUresult,char *Zero)
 {
-switch(ALUControl){
-    case 0: *ALUresult = A + B;
-    break;
-    case 1: *ALUresult = A - B;
-    break;
-    case 2: *ALUresult = (int)A < (int)B; 
-    break;
-    case 3: *ALUresult = A < B;
-    break;
-    case 4: *ALUresult = A && B;
-    break;
-    case 5: *ALUresult = A || B;
-    break;
-    case 6: *ALUresult = B << 16;
-    break;
-    case 7: *ALUresult = -A;
-    break;
-    
+    switch(ALUControl){
+        case 0: *ALUresult = A + B; break;
+        case 1: *ALUresult = A - B; break;
+        case 2: *ALUresult = (int)A < (int)B; break;
+        case 3: *ALUresult = A < B; break;
+        case 4: *ALUresult = A && B; break;
+        case 5: *ALUresult = A || B; break;
+        case 6: *ALUresult = B << 16; break;
+        case 7: *ALUresult = -A; break;
+    }
+  *Zero = (*ALUresult == 0) ? 1 : 0;   
 }
 
 int instruction_fetch(unsigned PC, unsigned *Mem, unsigned *instruction)
